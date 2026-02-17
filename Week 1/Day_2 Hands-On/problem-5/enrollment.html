@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Enrollment Form</title>
+</head>
+<body>
+
+<header>
+    <h2 align="center">Course Enrollment Form</h2>
+</header>
+
+<hr>
+
+<main>
+    <form action="Enrollment.php"  method="POST"  autocomplete="off">
+
+       
+        <label>Full Name:</label><br>
+        <input type="text" id="name" name="name" required>
+        <br><br>
+
+        
+        <label>Email:</label><br>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+
+        <label>Select Course:</label><br>
+        <input list="courses" id="course" name="course" required>
+
+        <datalist id="courses">
+            <option value="HTML">
+            <option value="CSS">
+            <option value="JavaScript">
+            <option value="Python">
+            <option value="Java">
+        </datalist>
+        <br><br>
+
+        <label>Years of Experience:</label><br>
+        <input type="number" id="experience" name="experience"
+               min="0" max="20" required>
+        <br><br>
+
+        <label>Interest Level (1-10):</label><br>
+        <input type="range" id="interest" name="interest"
+               min="1" max="10" value="5">
+        <br><br>
+
+        
+        <label>Skill Level:</label><br>
+        <meter min="0" max="100" value="60">60%</meter>
+        <p>(0-30 Beginner | 31-70 Intermediate | 71-100 Advanced)</p>
+        <br>
+
+        
+        <label>Enrollment Completion:</label><br>
+        <progress value="70" max="100"></progress>
+        <br><br>
+
+        
+        <input type="submit" value="Enroll Now">
+
+    </form>
+</main>
+
+</body>
+</html>

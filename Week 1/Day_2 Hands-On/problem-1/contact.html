@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Contact / Registration</title>
+</head>
+<body>
+
+<header>
+    <h2 align="center">Registration Form</h2>
+</header>
+
+<hr>
+
+
+<nav align="center">
+    <a href="index.html">Home</a> |
+    <a href="contact.html">Contact</a>
+</nav>
+
+<hr>
+
+<main>
+    <form>
+        <fieldset>
+            <legend>Registration Form</legend>
+                <label>Name:</label><br>
+                <input type="text" id="name" name="name"placeholder="Enter your full name" required>
+            <br><br>
+
+        
+        <label>Email:</label><br>
+        <input type="email" id="email" name="email"
+               placeholder="Enter your email"
+               required>
+        <br><br>
+
+     
+        <label>Password:</label><br>
+        <input type="password" id="pwd" name="pwd" placeholder="Enter password" required>
+        <br><br>
+
+        
+        <label>Gender:</label><br>
+        <input type="radio" name="gender" value="Male" required> Male
+        <input type="radio" name="gender" value="Female"> Female
+        <input type="radio" name="gender" value="Other"> Other
+        <br><br>
+
+        
+        <label>Select Course:</label><br>
+        <select id="course" name="course" required>
+            <option value="">Select Course</option>
+            <option value="HTML">HTML</option>
+            <option value="CSS">CSS</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="Python">Python</option>
+        </select>
+        <br><br>
+
+        
+        <input type="submit" value="Register">
+        <input type="reset" value="clear">
+    </fieldset>
+    </form>
+</main>
+
+</body>
+</html>
