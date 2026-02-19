@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analysis Tool</title>
+</head>
+<body>
+
+<h2>Number Analysis Tool</h2>
+
+<script>
+
+let number = 7;  
+
+
+let sign = (number >= 0) ? "Positive" : "Negative";
+
+document.write("Number: " + number + "<br>");
+document.write("Sign: " + sign + "<br>");
+
+
+if (number % 2 === 0) {
+    document.write("Even Number <br>");
+} else {
+    document.write("Odd Number <br>");
+}
+
+
+document.write("Numbers from 1 to " + number + ": <br>");
+
+for (let i = 1; i <= number; i++) {
+    document.write(i + "<br>");
+}
+
+</script>
+
+</body>
+</html>
