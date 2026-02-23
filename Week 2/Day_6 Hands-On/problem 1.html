@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Personal Notes Saver</title>
+</head>
+<body onload="loadNote()">
+
+    <h2>Daily Notes</h2>
+
+    <textarea id="note" rows="6" cols="40" placeholder="Write your note..."></textarea>
+    <br><br>
+
+    <button onclick="saveNote()">Save</button>
+    <button onclick="getNote()">Get Data</button>
+    <button onclick="clearNote()">Clear</button>
+
+    <script>
+      /*  function saveNote() {
+            let noteText = document.getElementById("note").value;
+            localStorage.setItem("dailyNote", noteText);
+            alert("Note Saved!");
+        } */
+        function saveNote() {
+            let noteText = document.getElementById("note").value.trim();
+
+            
+            if (noteText === "") {
+                alert("Please write something before saving!");
+                return;   
+            }
+
+            localStorage.setItem("dailyNote", noteText);
+            alert("Note Saved Successfully!");
+        }
+    
+        
+        function loadNote() {
+            let storedNote = localStorage.getItem("dailyNote");
+            if (storedNote) {
+                document.getElementById("note").value = storedNote;
+            }
+        }
+        function getNote() {
+            let storedNote = localStorage.getItem("dailyNote");
+
+            if (!storedNote) {
+                alert("No saved note found!");
+                return;
+            }
+
+            alert("Saved Note:\n\n" + storedNote);
+        }
+
+
+
+        /*function clearNote() {
+            localStorage.removeItem("dailyNote");
+            document.getElementById("note").value = "";
+            alert("Note Cleared!");
+        }*/
+        function clearNote() {
+            let noteText = document.getElementById("note").value.trim();
+            let storedNote = localStorage.getItem("dailyNote");
+
+    
+            if (noteText === "" && !storedNote) {
+                alert("No note to clear!");
+                return;
+            }
+
+            localStorage.removeItem("dailyNote");
+            document.getElementById("note").value = "";
+            alert("Note Cleared Successfully!");
+        }
+    </script>
+
+</body>
+</html>
+
+
