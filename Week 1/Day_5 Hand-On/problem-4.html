@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+</head>
+<body>
+
+    <h2>Student Profile Manager</h2>
+
+    <div id="studentProfile" style="border:1px solid black; padding:10px;"></div>
+
+    <br>
+    <input type="number" id="newMarks" placeholder="Enter new marks">
+    <button onclick="changeMarks()">Update Marks</button>
+
+    <script>
+        
+        var student = {
+            name: "Nirupa",
+            rollNo: 133,
+            marks: 85
+        };
+
+        function updateStudentProfile(studentObj) {
+            var profileDiv = document.getElementById("studentProfile");
+
+            profileDiv.innerHTML =
+                "<p>Name: " + studentObj.name + "</p>" +
+                "<p>Roll No: " + studentObj.rollNo + "</p>" +
+                "<p>Marks: " + studentObj.marks + "</p>";
+        }
+
+        function updateMarks(newMarks) {
+            student.marks = newMarks;
+            updateStudentProfile(student);
+        }
+
+        function changeMarks() {
+            var marksValue = document.getElementById("newMarks").value;
+            updateMarks(marksValue);
+        }
+
+        
+        updateStudentProfile(student);
+    </script>
+
+</body>
+</html>

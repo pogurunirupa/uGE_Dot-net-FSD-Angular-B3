@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+</head>
+<body>
+
+    <h2>Counter Application</h2>
+
+    <p id="counterValue">0</p>
+
+    <button onclick="incrementCounter(1)">Increment</button>
+    <button onclick="resetCounter()">Reset</button>
+
+    <script>
+        
+        var counter = 0;
+
+        function incrementCounter(step) {
+            counter = counter + step;
+            document.getElementById("counterValue").innerText = counter;
+        }
+
+        function resetCounter() {
+            counter = 0;
+            document.getElementById("counterValue").innerText = counter;
+        }
+    </script>
+
+</body>
+</html>
