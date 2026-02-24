@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Cart Summary</title>
+</head>
+<body>
+
+    <h2>Product Cart Summary</h2>
+    <button onclick="showCart()">Show Cart Summary</button>
+
+    <pre id="output"></pre>
+
+<script>
+
+    
+    const products = [
+        { name: "Laptop", price: 50000, quantity: 1 },
+        { name: "Mouse", price: 500, quantity: 2 },
+        { name: "Keyboard", price: 1500, quantity: 1 }
+    ];
+
+    
+    const calculateCartTotal = (items) => {
+        return items.reduce((total, item) => 
+            total + (item.price * item.quantity), 0
+        );
+    };
+
+    function showCart() {
+
+        const total = calculateCartTotal(products);
+
+       
+        const invoice = `
+Shopping Cart Invoice
+----------------------
+${products.map(item => 
+`${item.name} - ₹${item.price} x ${item.quantity} = ₹${item.price * item.quantity}`
+).join("\n")}
+
+Total Cart Value: ₹${total}
+        `;
+
+        document.getElementById("output").innerText = invoice;
+    }
+
+</script>
+
+</body>
+</html>

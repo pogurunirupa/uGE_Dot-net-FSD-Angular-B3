@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Filter</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 8px;
+        }
+        select, button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Employee Directory</h2>
+
+
+<select id="jobSelect">
+    <option value="All">All Employees</option>
+    <option value="Manager">Manager</option>
+    <option value="Salesman">Salesman</option>
+    <option value="Watchman">Watchman</option>
+</select>
+
+<button onclick="showEmployees()">Show Emps</button>
+
+<br><br>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Job</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+    <tbody id="empTableBody"></tbody>
+</table>
+
+<script>
+
+    
+    const employees = [
+        { id: 1, name: "Nirupa", job: "Manager", salary: 60000 },
+        { id: 2, name: "Neha", job: "Salesman", salary: 30000 },
+        { id: 3, name: "Charan", job: "Manager", salary: 65000 },
+        { id: 4, name: "Afrin", job: "Salesman", salary: 28000 },
+        { id: 5, name: "Sudha", job: "Salesman", salary: 25000 },
+        { id: 6, name: "Purna", job: "Watchman", salary: 20000 }
+    ];
+
+    function showEmployees() {
+
+        const selectedJob = document.getElementById("jobSelect").value;
+        const tableBody = document.getElementById("empTableBody");
+
+       
+        tableBody.innerHTML = "";
+
+        
+        const filteredEmployees = selectedJob === "All"
+            ? employees
+            : employees.filter(emp => emp.job === selectedJob);
+
+        
+        filteredEmployees.forEach(emp => {
+            tableBody.innerHTML += `
+                <tr>
+                    <td>${emp.id}</td>
+                    <td>${emp.name}</td>
+                    <td>${emp.job}</td>
+                    <td>${emp.salary}</td>
+                </tr>
+            `;
+        });
+    }
+
+</script>
+
+</body>
+</html>
