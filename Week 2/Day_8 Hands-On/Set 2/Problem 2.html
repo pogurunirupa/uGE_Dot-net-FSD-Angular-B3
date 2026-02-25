@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Theme Toggle</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        button {
+            padding: 14px 28px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="toggle">Toggle Theme</button>
+
+    <script>
+        const btn = document.getElementById("toggle");
+
+        
+        function loadTheme() {
+            const savedTheme = localStorage.getItem("theme");
+
+            if (savedTheme === "dark") {
+                document.body.style.backgroundColor = "black";
+                document.body.style.color = "white";
+                document.body.classList.add("dark");
+            } else {
+                document.body.style.backgroundColor = "white";
+                document.body.style.color = "black";
+                document.body.classList.remove("dark");
+            }
+        }
+
+        btn.addEventListener("click", function () {
+
+            document.body.classList.toggle("dark");
+
+            if (document.body.classList.contains("dark")) {
+                document.body.style.backgroundColor = "black";
+                document.body.style.color = "white";
+                localStorage.setItem("theme", "dark");
+            } else {
+                document.body.style.backgroundColor = "white";
+                document.body.style.color = "black";
+                localStorage.setItem("theme", "light");
+            }
+        });
+
+       
+        loadTheme();
+    </script>
+
+</body>
+</html> 

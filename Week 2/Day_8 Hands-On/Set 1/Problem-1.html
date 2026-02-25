@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Weather App</title>
+</head>
+<body>
+
+    <h2>Weather Report</h2>
+
+    <button id="btn1">Get Weather (Promise)</button>
+    <button id="btn2">Get Weather (Async/Await)</button>
+
+    <p id="result"></p>
+
+    <script>
+        const btn1 = document.getElementById("btn1");
+        const btn2 = document.getElementById("btn2");
+        const result = document.getElementById("result");
+
+        const url = "https://api.open-meteo.com/v1/forecast?latitude=17.38&longitude=78.48&current_weather=true";
+
+       
+        btn1.addEventListener("click", function () {
+
+            fetch(url)
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+
+                    let temperature = data.current_weather.temperature;
+                    let wind = data.current_weather.windspeed;
+
+                    result.innerHTML =
+                        "Using Promise:<br>" +
+                        "Temperature: " + temperature + "°C <br>" +
+                        "Wind Speed: " + wind + " km/h";
+                })
+                .catch(function(error) {
+                    result.innerHTML = "Error occurred!";
+                    console.log(error);
+                });
+
+        });
+
+        
+        btn2.addEventListener("click", async function () {
+
+            try {
+                let response = await fetch(url);
+                let data = await response.json();
+
+                let temperature = data.current_weather.temperature;
+                let wind = data.current_weather.windspeed;
+
+                result.innerHTML =
+                    "Using Async/Await:<br>" +
+                    "Temperature: " + temperature + "°C <br>" +
+                    "Wind Speed: " + wind + " km/h";
+
+            } catch (error) {
+                result.innerHTML = "Error occurred!";
+                console.log(error);
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
