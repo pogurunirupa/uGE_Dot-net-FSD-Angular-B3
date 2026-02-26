@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Class Example</title>
+</head>
+<body>
+
+<h2>Student Details</h2>
+<pre id="output"></pre>
+
+<script>
+class Student {
+
+    constructor(name, rollNumber, marks) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+        this.marks = marks;
+    }
+
+    getDetails() {
+        return `Name: ${this.name} 
+Roll Number: ${this.rollNumber}
+Marks: ${this.marks}`;
+    }
+
+    getGrade() {
+        if (this.marks >= 90) {
+            return "A";
+        } else if (this.marks >= 75) {
+            return "B";
+        } else if (this.marks >= 50) {
+            return "C";
+        } else {
+            return "Fail";
+        }
+    }
+}
+
+
+const student1 = new Student("Nirupa", 101, 92);
+const student2 = new Student("Rupa", 102, 68);
+
+
+document.getElementById("output").textContent =
+    student1.getDetails() + "\nGrade: " + student1.getGrade() +
+    "\n\n" +
+    student2.getDetails() + "\nGrade: " + student2.getGrade();
+</script>
+
+</body>
+</html>
