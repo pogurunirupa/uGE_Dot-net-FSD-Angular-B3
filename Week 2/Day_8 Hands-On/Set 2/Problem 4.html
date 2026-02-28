@@ -40,9 +40,7 @@
     <ul id="productList"></ul>
 
     <script>
-        // --------------------------
-        // Application State
-        // --------------------------
+       
         const products = [
             "Laptop",
             "Mobile",
@@ -56,9 +54,7 @@
         const searchInput = document.getElementById("searchInput");
         const productList = document.getElementById("productList");
 
-        // --------------------------
-        // Render Function
-        // --------------------------
+       
         function renderProducts(items) {
             productList.innerHTML = "";
 
@@ -77,35 +73,30 @@
             });
         }
 
-        // --------------------------
-        // Filter Function
-        // --------------------------
+       
         function filterProducts(searchText) {
             return products.filter(function(product) {
                 return product.toLowerCase().includes(searchText.toLowerCase());
             });
         }
 
-        // --------------------------
-        // Input Event Listener
-        // --------------------------
+      
         searchInput.addEventListener("input", function(event) {
             const filtered = filterProducts(event.target.value);
             renderProducts(filtered);
         });
 
-        // --------------------------
-        // Event Delegation Example
-        // --------------------------
+        
         productList.addEventListener("click", function(event) {
             if (event.target.tagName === "LI") {
                 alert("You selected: " + event.target.textContent);
             }
         });
 
-        // Initial Render
+      
         renderProducts(products);
     </script>
 
 </body>
+
 </html>
