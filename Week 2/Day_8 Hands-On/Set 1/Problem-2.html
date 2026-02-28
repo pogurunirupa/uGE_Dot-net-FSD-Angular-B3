@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Manager - Async Demo</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 30px;
+        }
+
+        button {
+            padding: 8px 15px;
+            margin: 10px 5px;
+            cursor: pointer;
+        }
+
+        .box {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            min-height: 120px;
+        }
+
+        .title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .log {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Task Manager - Async Evolution</h2>
+
+    <button id="promiseBtn">Run Promise Version</button>
+    <button id="asyncBtn">Run Async/Await Version</button>
+
+    <div class="box">
+        <div class="title">Output:</div>
+        <div id="output"></div>
+    </div>
+
+    <script>
+       
+
+        let tasks = [];
+
+        const outputDiv = document.getElementById("output");
+
+        const logToUI = (message) => {
+            const p = document.createElement("p");
+            p.className = "log";
+            p.textContent = message;
+            outputDiv.appendChild(p);
+        };
+
+        const clearUI = () => {
+            outputDiv.innerHTML = "";
+        };
+
+        const addTask = (task) => {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    tasks.push(task);
+                    resolve(`Task "${task}" added.`);
+                }, 1000);
+            });
+        };
+
+        const deleteTask = (task) => {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    tasks = tasks.filter(t => t !== task);
+                    resolve(`Task "${task}" deleted.`);
+                }, 1000);
+            });
+        };
+
+        const listTasks = () => {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve(tasks);
+                }, 1000);
+            });
+        };
+
+        
+
+        const runPromiseVersion = () => {
+
+            clearUI();
+            tasks = [];
+
+            logToUI("Promise Version Start");
+
+            addTask("Learn Promises")
+                .then(msg => {
+                    logToUI(msg);
+                    return listTasks();
+                })
+                .then(taskList => {
+                    logToUI(`Current Tasks: ${taskList}`);
+                    return deleteTask("Learn Promises");
+                })
+                .then(msg => {
+                    logToUI(msg);
+                    return listTasks();
+                })
+                .then(taskList => {
+                    logToUI(`Updated Tasks: ${taskList}`);
+                    logToUI("Promise Version End");
+                });
+        };
+
+       
+        const runAsyncAwaitVersion = async () => {
+
+            clearUI();
+            tasks = [];
+
+            logToUI("Async/Await Version Start");
+
+            try {
+                const msg1 = await addTask("Master Async/Await");
+                logToUI(msg1);
+
+                const current = await listTasks();
+                logToUI(`Current Tasks: ${current}`);
+
+                const msg2 = await deleteTask("Master Async/Await");
+                logToUI(msg2);
+
+                const updated = await listTasks();
+                logToUI(`Updated Tasks: ${updated}`);
+
+                logToUI("Async/Await Version End");
+
+            } catch (error) {
+                logToUI(error);
+            }
+        };
+
+       
+        document.getElementById("promiseBtn")
+            .addEventListener("click", runPromiseVersion);
+
+        document.getElementById("asyncBtn")
+            .addEventListener("click", runAsyncAwaitVersion);
+
+    </script>
+
+</body>
+</html>
