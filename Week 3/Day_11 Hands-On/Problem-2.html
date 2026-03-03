@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FAQ Section</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .faq-question {
+            cursor: pointer;
+            background: #f2f2f2;
+            padding: 10px;
+            margin-top: 5px;
+        }
+        .faq-answer {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        .active {
+            background: lightblue;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq">
+    <div class="faq-question">1. What is jQuery?</div>
+    <div class="faq-answer">jQuery is a JavaScript library.</div>
+
+    <div class="faq-question">2. Why use jQuery?</div>
+    <div class="faq-answer">It simplifies DOM manipulation.</div>
+
+    <div class="faq-question">3. What is slideToggle?</div>
+    <div class="faq-answer">It shows/hides content with animation.</div>
+
+    <div class="faq-question">4. Is jQuery still used?</div>
+    <div class="faq-answer">Yes, especially in legacy systems.</div>
+
+    <div class="faq-question">5. What is CDN?</div>
+    <div class="faq-answer">Content Delivery Network.</div>
+</div>
+
+<script>
+$(document).ready(function(){
+
+    $(".faq-question").click(function(){
+
+        // Hide all answers except the current one
+        $(".faq-answer").not($(this).next()).slideUp();
+
+        // Remove active class from all questions
+        $(".faq-question").not(this).removeClass("active");
+
+        // Toggle current answer
+        $(this).next(".faq-answer").slideToggle();
+
+        // Toggle active class for current question
+        $(this).toggleClass("active");
+
+    });
+
+});
+</script>
+
+</body>
+</html>

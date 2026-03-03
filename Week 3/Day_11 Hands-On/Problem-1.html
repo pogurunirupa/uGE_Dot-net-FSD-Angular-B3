@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Feedback Form</title>
+   
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+        body { 
+            font-family: Arial; 
+        }
+        .error { 
+            color: red; 
+            margin-top: 10px;
+        }
+        .success { 
+            color: green; 
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Student Feedback Form</h2>
+
+<form id="feedbackForm">
+
+    Name: <br>
+    <input type="text" id="name"><br><br>
+
+    Email: <br>
+    <input type="email" id="email"><br><br>
+
+    Course Rating: <br>
+    <select id="rating">
+        <option value="">Select Rating</option>
+        <option>Excellent</option>
+        <option>Good</option>
+        <option>Average</option>
+        <option>Poor</option>
+    </select><br><br>
+
+    Comments: <br>
+    <textarea id="comments"></textarea><br><br>
+
+    <button type="button" id="submitBtn">Submit</button>
+
+</form>
+
+<div id="message"></div>
+
+<script>
+$(document).ready(function(){
+
+    $("#submitBtn").click(function(){
+
+        let name = $("#name").val().trim();
+        let email = $("#email").val().trim();
+
+        
+        $("#message").removeClass("success error");
+
+        if(name === ""){
+            $("#message")
+                .addClass("error")
+                .text("Please enter your Name.");
+        }
+        else if(email === ""){
+            $("#message")
+                .addClass("error")
+                .text("Please enter your Email.");
+        }
+        else if(!email.includes("@")){
+            $("#message")
+                .addClass("error")
+                .text("Please enter a valid Email (must contain @).");
+        }
+        else{
+            $("#message")
+                .addClass("success")
+                .text("Thank you! Your feedback has been submitted successfully.");
+
+            
+            $("#feedbackForm")[0].reset();
+        }
+
+    });
+
+});
+</script>
+
+</body>
+</html>
