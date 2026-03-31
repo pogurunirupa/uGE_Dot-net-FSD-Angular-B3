@@ -1,0 +1,52 @@
+﻿@model List<ContactApp.Models.ContactInfo>
+
+<h2 align="center">Contact Management</h2>
+
+<table width="100%">
+    <tr>
+        <td>
+            <a href="/Contact/AddContact">Add Contact</a>
+        </td>
+        <td align="right">
+            <form method="get" action="/Contact/GetContactById">
+                Search by ID:
+                <input type="number" name="id" required />
+                <input type="submit" value="Search" />
+            </form>
+        </td>
+    </tr>
+</table>
+
+<br />
+
+<table border="1" width="100%" cellpadding="8">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Company</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Designation</th>
+    </tr>
+
+    @if (Model.Count > 0)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ContactId</td>
+                <td>@item.FirstName @item.LastName</td>
+                <td>@item.CompanyName</td>
+                <td>@item.EmailId</td>
+                <td>@item.MobileNo</td>
+                <td>@item.Designation</td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="6" align="center">No Contacts Found</td>
+        </tr>
+    }
+</table>

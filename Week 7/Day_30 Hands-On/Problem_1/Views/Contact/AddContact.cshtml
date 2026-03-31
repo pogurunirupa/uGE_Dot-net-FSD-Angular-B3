@@ -1,0 +1,29 @@
+﻿@model ContactApp.Models.ContactInfo
+
+<h2>Add Contact</h2>
+@Html.ValidationSummary()
+<form method="post">
+    <label>Contact Id:</label>
+    <input asp-for="ContactId" />
+    <span asp-validation-for="ContactId"></span><br />
+
+    <label>First Name:</label>
+    <input asp-for="FirstName" />
+    <span asp-validation-for="FirstName"></span><br />
+    <label>Last Name:</label>
+    <input asp-for="LastName" />
+    <span asp-validation-for="LastName"></span><br />
+    <label>Company:</label>
+    <input asp-for="CompanyName" />
+    <span asp-validation-for="CompanyName"></span><br />
+    <label>Email:</label>
+    <input asp-for="EmailId" />
+    <span asp-validation-for="EmailId"></span><br />
+    <label>Mobile:</label>
+    <input asp-for="MobileNo" />
+    <span asp-validation-for="MobileNo"></span><br />
+    <label>Designation:</label>
+    <input asp-for="Designation" />
+    <span asp-validation-for="Designation"></span><br />
+    <button type="submit">Save</button>
+</form>
