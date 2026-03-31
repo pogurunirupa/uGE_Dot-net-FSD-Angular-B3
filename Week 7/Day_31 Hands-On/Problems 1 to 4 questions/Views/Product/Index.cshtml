@@ -1,0 +1,51 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h2 style="text-align:center;">Product Entry</h2>
+
+<div style="width: 400px; margin: auto; border: 1px solid #ccc; padding: 20px; border-radius: 8px;">
+
+    <form method="post" action="/product/add">
+
+        <label>Product Name</label><br />
+        <input type="text" name="name" style="width:100%; padding:8px; margin-bottom:10px;" /><br />
+
+        <label>Price</label><br />
+        <input type="number" name="price" style="width:100%; padding:8px; margin-bottom:10px;" /><br />
+
+        <label>Quantity</label><br />
+        <input type="number" name="qty" style="width:100%; padding:8px; margin-bottom:15px;" /><br />
+
+        <button type="submit" style="width:100%; padding:10px; background-color:#4CAF50; color:white; border:none; border-radius:5px;">
+            Add Product
+        </button>
+
+    </form>
+</div>
+
+<br />
+
+<h2 style="text-align:center;">Product List</h2>
+
+<table style="width: 60%; margin: auto; border-collapse: collapse;">
+    <tr style="background-color:#f2f2f2;">
+        <th style="border:1px solid #ddd; padding:10px;">Name</th>
+        <th style="border:1px solid #ddd; padding:10px;">Price</th>
+        <th style="border:1px solid #ddd; padding:10px;">Quantity</th>
+    </tr>
+
+    @if (ViewBag.Products != null)
+    {
+        foreach (var p in ViewBag.Products)
+        {
+            <tr>
+                <td style="border:1px solid #ddd; padding:10px;">@p.Name</td>
+                <td style="border:1px solid #ddd; padding:10px;">@p.Price</td>
+                <td style="border:1px solid #ddd; padding:10px;">@p.Qty</td>
+            </tr>
+        }
+    }
+</table>
+    

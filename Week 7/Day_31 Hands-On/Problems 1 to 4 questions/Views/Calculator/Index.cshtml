@@ -1,0 +1,31 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h2 style="text-align:center;">Simple Calculator</h2>
+
+<div style="width:400px; margin:auto; border:1px solid #ccc; padding:20px; border-radius:8px;">
+
+    <form method="post" action="/calc/add">
+
+        <label>Number 1</label><br />
+        <input type="number" name="num1" style="width:100%; padding:8px; margin-bottom:10px;" /><br />
+
+        <label>Number 2</label><br />
+        <input type="number" name="num2" style="width:100%; padding:8px; margin-bottom:15px;" /><br />
+
+        <button type="submit" style="width:100%; padding:10px; background-color:#28A745; color:white; border:none; border-radius:5px;">
+            Add
+        </button>
+
+    </form>
+
+    @if (ViewData["Result"] != null)
+    {
+        <h3 style="text-align:center; margin-top:20px; color:green;">
+            Result: @ViewData["Result"]
+        </h3>
+    }
+
+</div>
